@@ -1,0 +1,38 @@
+
+This is a brief description of what I have done till now.
+
+First I started with block wise overlap detection of reads. I partition the reads into blocks of size k. Ltes say the read are x[1..5000], y[1..2000] where x[i], y[i] is a base, then say my block is of size 20, then x[1..20] is the first block, x[21..40] second block, so on and similarly for y. So I first try to align y[1..20] with x[1..20] if not then with y[1..20] and x[21..40] then y[1..20] and x[41..60].
+
+Now this is not so easy. y[1..20] may start to overlap with a block of x from the middle say, y[1..10] matches with x[31..40]. To get around this I give an initial credit so that the algorithm can survive high cost block matches initially. So, for example in the case where y[1..10] overlaps with x[31..40], then due to the initial credit this will pass. If with future matches I keep adding/reducing the credit accordingly to the matches/mismatches of the of further blocks. If the credit goes below a certain threshold then assume that particular overlap as bad and break off. Right now I am giving an intial credit equal to the block size.
+
+TODO - Can try with different initial creadit value, also right now i add the total matches (minus the mismatches) to the credit. This should be fraction proportional to the error rate. Should try to vary this too.
+
+There is another complication to this. The ovelaps between the x and y reads may continue with a particular shift between the blocks so how does it cope up with that. So, what I do is that I actually take the best overlap of x[1..20] with y[1..18], y[1..19], y[1..20], y[1..21] and y[1..22]. So in the case where x[31..40] overlaps with y[1..10], x[41..60] with y[11..30] and so on. So with this we will get x[31..40] with y[1..18], x[41..60] with y[19..36], x[61..80] with y[37..54] and so on it will keep shifting till it reaches the correct alignment.
+
+With this kind of scheme we will get overlaps in multiples of the block size only so if the overlap is of say 256 b.p. and the block size is 5 then we will get an overlap of 250. I actually checked the results out of my program are within this range when compared with the output of minimus for the same input. Only in rare instances they differ a lot.
+
+So, I started with the 1000 base pair DNA sequence of EColi and generated the reads by Readsim with 30x coverage generating about 1000 reads. Initially, I was calculating the alignment between blocks each time using DP by Smith-Waterman. I varied the block size to see the effect on runtime and here it is
+
+Block Size          Time taken
+
+24                  0m5.787s
+18                  0m4.533s
+12                  0m3.330s
+6                   0m2.237s
+
+So, now with block size of 5, I hash each possible DNA sequence of length 5 to an integer value and pre-calculate the the overlap cost of each pair of blocks. Here is the runtimes for different number of reads
+
+Reads count             Time on my VM
+
+100                     0m6.946s
+200                     0m12.571s
+500                     0m59.926s
+1000                    3m47.140s
+
+The minimus takes about 26s to detect the overlaps for 1000 reads. This is sad. I was hoping it to be fast enough. Now I will try to report the numbers with on demand block overlap calculation with memoisation with different larger block sizes to see the effect on runtime.
+
+Here is my single file very hacky source code for this https://github.com/nomind/CompBioFall2012
+
+I would like to get some comments/suggestion on this. What I am trying to do is to have a faster overlap detection method. Is it a good idea that instead of calculating the overlap between each pair of read, I only calculate the ones with significant overlaps and reject all the insignificant pairs and thus save on the runtime.
+
+
