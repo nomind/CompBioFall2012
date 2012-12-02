@@ -1,0 +1,25 @@
+Why not KMP?
+
+Can we modify KMP for finding overlaps? It turns out tat we can with exact overlaps. We just need to modify the terminating condition of KMP so that to not terminate in case we do not get the complete pattern in the text but goes on to to try matching prefixes of pattern. In fact the classical KMP is an extension of suffix prefix matching of two strings.
+
+But what about approximate matches? It looks like we can modify it to handle substitutions but not insertion and deletions. But for now lets just consider substitutions only, say at max $k$ substitution. So, during preprocessing of the pattern in KMP we build an table which calculates, for every index, consider the string P[1..i], find the larget proper prefix, P[1..j], j<i, which matches the suffix P[i-j+1..i]. In our case the match may contain upto $k$ mismathes. Consider building the table for the pattern ABABA
+
+P[1..1) = "A"
+Match = 0
+
+P[1..2) = "AB"
+Prefix = P[1..1] = "A"
+M = 1
+
+P[1..3) = "ABA"
+Prefix = P[1..2] = "AB"
+M = 2
+
+P[1..4) = "ABAB"
+
+For this it will first try to extend the last match. So it will try to match "ABA" as suffix of "ABAB" when the mismatches witll become 3 and will be rejected. Next it will try with the prefix match of "AB" which is "A" and will accept this as it is of only 1 mismatch. But we skiped the optimal match, becuase we do not have "A" match of P[1..3) which is rejected in favour of larger match "AB" even if with mismatches. 
+
+To overcome this even if we may keep a list of matches for every index. We will have to keep $k$ matched in order in which case the runtime will become $nk$ which is the same as DP. So, we don't care.
+
+Prefix = P[1..3] = "AB"
+M = 
