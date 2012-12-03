@@ -238,10 +238,10 @@ void init(int **table, int dim) {
 int main() {
 	/* read all reads */
 	vector<Read> readList;
-	//readReads("../data/ecoli_1K/ecoli.reads.1k.readsim.30x.fasta", readList);
+	readReads("../data/ecoli_1K/ecoli.reads.1k.readsim.30x.fasta", readList);
 	
 	
-	char x1[10000];
+	/*char x1[10000];
 	char *y1 = "TTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGCTTCTGAACTGATTACCTGCCGTGAGTAAATTAAAATTTTATTGACTTAGGCACTAAATACTTTAACCAATATAGGCATAGCGCACAGACAGATAAAAATTACAGAGTACACAACATCCATGAAACGCATTAGCACCACCATTACCACCACCATCACCATTACCACAGGTAACGGTGCGGGCTGACGCGTACAGGAAACACAGAAAAAAGCCCGCACCTGACAGTGCGGGCTTTTTTTTTCGACCAAAGGTAACGAGGTAACAACCATGCGAGTGTTGAAGTTCGGCGGTACATCAGTGGCAAATGCAGAACGTTCTCTGCGTGTTGCCGATATTCTGGAAAGCAATGCCAGCAGGGGCAGGTGGCCACCGTCCTCTCTGCCCCCGCCAAAATCACCAACCACCTGGTGGCGATGATTGAAAAAACCATTAGCGGCCAGGATGCTTTACCCAATATCAGCGATGCCGAACGTATTTTTGCCGAACTTTTGACGGGACTCGCCGCCGCCCAGCCGGGGTTCCCGCCGGCGCAATTGAAAACTTTCGTCGATCAGGAATTTGCCCAAATAAAACATGTCCTGCATGGC";
 	int z1 = strlen(y1);
 	strcpy(x1, y1);
@@ -252,10 +252,10 @@ int main() {
 	strcpy(x2, y2);
 	Read r2(x2, z2);
 	readList.push_back(r1);
-	readList.push_back(r2);
+	readList.push_back(r2);*/
 
 	// for every pair of Reads calculate the overlap 
-	int sz = readList.size();
+	/*int sz = readList.size();
 	int **mat = allocate2d(sz, sz);
 	int bufSz = blockSz + errSz;
 	int **distBuf = allocate2d(bufSz + 1, bufSz + 1);
@@ -263,12 +263,12 @@ int main() {
 		for(int j=i+1; j<sz; j++) {
 			//cout<<i<<" "<<j<<endl;
 			mat[i][j] = overlap(readList[i], readList[j], distBuf);
-			cout<<mat[i][j]<<endl;
+			//cout<<mat[i][j]<<endl;
 		}
-	}
+	}*/
 
 	//Init the table
-	/*int dim = pow(base, blockSz+errSz);
+	int dim = pow(base, blockSz+errSz);
 	int **table = allocate2d(dim+2, dim+2);
 	for(int i=0; i<dim; i++) {
 		for(int j=0; j<dim; j++) {
@@ -286,9 +286,10 @@ int main() {
 			mat[i][j] = overlap(readList[i], readList[j], table);
 			//cout<<mat[i][j]<<endl;
 		}
-	}*/
+	}
 
-	//readOverlaps("../data/ecoli_1K/overlap.afg", mat, sz, readList);
+	//cout<<stddev("../data/ecoli_1K/overlap.afg", mat, sz, readList)<<endl;
 
 	return 0;
 }
+

@@ -9,7 +9,7 @@ double err = 15.0/100;
 int overlap(Read r1, Read r2, int **dist_buf) {
     int n = r1.len;
     int m = r2.len;
-    cout<<n<<" "<<m<<endl;
+    //cout<<n<<" "<<m<<endl;
     for(int i=0; i<=n; i++) {
         dist_buf[0][i] = 0;
     }
@@ -36,23 +36,23 @@ int overlap(Read r1, Read r2, int **dist_buf) {
             min_error = dist_buf[m][i];
         }
     }
-    cout<<endl<<endl;
+    //cout<<endl<<endl;
     for(int i=m; i>0 ; i--) {
         if(dist_buf[i][n] < err*i && dist_buf[i][n] < min_error) {
             ans = i;
             min_error = dist_buf[i][n];
         }
     }
-    cout<<ans<<endl;
+    //cout<<ans<<endl;
     return ans;
 }
 
 int main() {
     /* read all reads */
 	vector<Read> readList;
-	//readReads("../data/ecoli_1K/ecoli.reads.1k.readsim.30x.fasta", readList);
+	readReads("../data/ecoli_1K/ecoli.reads.1k.readsim.30x.fasta", readList);
 
-    char x1[10000];
+    /*char x1[10000];
 	char *y1 = "TTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGCTTCTGAACTGATTACCTGCCGTGAGTAAATTAAAATTTTATTGACTTAGGCACTAAATACTTTAACCAATATAGGCATAGCGCACAGACAGATAAAAATTACAGAGTACACAACATCCATGAAACGCATTAGCACCACCATTACCACCACCATCACCATTACCACAGGTAACGGTGCGGGCTGACGCGTACAGGAAACACAGAAAAAAGCCCGCACCTGACAGTGCGGGCTTTTTTTTTCGACCAAAGGTAACGAGGTAACAACCATGCGAGTGTTGAAGTTCGGCGGTACATCAGTGGCAAATGCAGAACGTTCTCTGCGTGTTGCCGATATTCTGGAAAGCAATGCCAGCAGGGGCAGGTGGCCACCGTCCTCTCTGCCCCCGCCAAAATCACCAACCACCTGGTGGCGATGATTGAAAAAACCATTAGCGGCCAGGATGCTTTACCCAATATCAGCGATGCCGAACGTATTTTTGCCGAACTTTTGACGGGACTCGCCGCCGCCCAGCCGGGGTTCCCGCCGGCGCAATTGAAAACTTTCGTCGATCAGGAATTTGCCCAAATAAAACATGTCCTGCATGGC";
 	int z1 = strlen(y1);
 	strcpy(x1, y1);
@@ -63,10 +63,10 @@ int main() {
 	strcpy(x2, y2);
 	Read r2(x2, z2);
 	readList.push_back(r1);
-	readList.push_back(r2);
+	readList.push_back(r2);*/
 
 	// for every pair of Reads calculate the overlap 
-	int sz = readList.size();
+	int sz = 20;
     int len = 0;
     for(int i=0; i<sz; i++) {
         if(readList[i].len > len) {
@@ -80,7 +80,7 @@ int main() {
 	for(int i=0; i<sz; i++) {
 		for(int j=i+1; j<sz; j++) {
 			mat[i][j] = overlap(readList[i], readList[j], distBuf);
-            cout<<"dist "<<mat[i][j]<<endl;
+            //cout<<"dist "<<mat[i][j]<<endl;
 		}
 	}
 
