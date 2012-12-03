@@ -1,0 +1,126 @@
+!!! 2012-11-22 16:12:37  Started by nomind@UNKNOWN on Thu Nov 22 16:12:37 2012
+
+!!! 2012-11-22 16:12:37  Doing step 10:  Building AMOS bank
+!!! 2012-11-22 16:12:37  Running: /home/nomind/Desktop/tau/amos/bin/bank-transact -c -z -b data/ecoli_1K/reads.readsim.30x.bnk -m data/ecoli_1K/reads.readsim.30x.afg
+START DATE: Thu Nov 22 16:12:37 2012
+Bank is: data/ecoli_1K/reads.readsim.30x.bnk
+    0%                                            100%
+AFG 
+Messages read: 0
+Objects added: 0
+Objects deleted: 0
+Objects replaced: 0
+END DATE:   Thu Nov 22 16:12:37 2012
+!!! 2012-11-22 16:12:37  Done! Elapsed time:0d 0h 0m 0s
+
+!!! 2012-11-22 16:12:37  Doing step 20:  Running overlap
+!!! 2012-11-22 16:12:37  Running: /home/nomind/Desktop/tau/amos/bin/hash-overlap -B data/ecoli_1K/reads.readsim.30x.bnk
+Starting on Thu Nov 22 16:12:37 2012
+
+Read bank is data/ecoli_1K/reads.readsim.30x.bnk
+Alignment error rate is 0.06
+Minimum overlap bases is 40
+Be strand-specific: 0
+** AMOS Exception **
+WHAT: Could not open bank file, data/ecoli_1K/reads.readsim.30x.bnk/RED.ifo, No such file or directory
+LINE: 1264
+FILE: Bank_AMOS.cc
+
+!!! 2012-11-22 16:12:37  Command: /home/nomind/Desktop/tau/amos/bin/hash-overlap -B data/ecoli_1K/reads.readsim.30x.bnk exited with status: 1
+!!! END - Elapsed time: 0d 0h 0m 0s
+
+!!! 2012-11-22 16:13:58  Started by nomind@UNKNOWN on Thu Nov 22 16:13:58 2012
+
+!!! 2012-11-22 16:13:58  Doing step 10:  Building AMOS bank
+!!! 2012-11-22 16:13:58  Running: /home/nomind/Desktop/tau/amos/bin/bank-transact -c -z -b data/ecoli_1K/reads.readsim.30x.bnk -m data/ecoli_1K/reads.readsim.30x.afg
+START DATE: Thu Nov 22 16:13:58 2012
+Bank is: data/ecoli_1K/reads.readsim.30x.bnk
+    0%                                            100%
+AFG 
+Messages read: 0
+Objects added: 0
+Objects deleted: 0
+Objects replaced: 0
+END DATE:   Thu Nov 22 16:13:58 2012
+!!! 2012-11-22 16:13:58  Done! Elapsed time:0d 0h 0m 0s
+
+!!! 2012-11-22 16:13:58  Doing step 20:  Running overlap
+!!! 2012-11-22 16:13:58  Running: /home/nomind/Desktop/tau/amos/bin/hash-overlap -B data/ecoli_1K/reads.readsim.30x.bnk
+Starting on Thu Nov 22 16:13:58 2012
+
+Read bank is data/ecoli_1K/reads.readsim.30x.bnk
+Alignment error rate is 0.06
+Minimum overlap bases is 40
+Be strand-specific: 0
+** AMOS Exception **
+WHAT: Could not open bank file, data/ecoli_1K/reads.readsim.30x.bnk/RED.ifo, No such file or directory
+LINE: 1264
+FILE: Bank_AMOS.cc
+
+!!! 2012-11-22 16:13:58  Command: /home/nomind/Desktop/tau/amos/bin/hash-overlap -B data/ecoli_1K/reads.readsim.30x.bnk exited with status: 1
+!!! END - Elapsed time: 0d 0h 0m 0s
+
+!!! 2012-11-22 16:16:00  Started by nomind@UNKNOWN on Thu Nov 22 16:16:00 2012
+
+!!! 2012-11-22 16:16:00  Doing step 10:  Building AMOS bank
+!!! 2012-11-22 16:16:00  Running: /home/nomind/Desktop/tau/amos/bin/bank-transact -c -z -b data/ecoli_1K/reads.readsim.30x.bnk -m data/ecoli_1K/reads.readsim.30x.afg
+START DATE: Thu Nov 22 16:16:00 2012
+Bank is: data/ecoli_1K/reads.readsim.30x.bnk
+    0%                                            100%
+AFG ..................................................
+Messages read: 2074
+Objects added: 2074
+Objects deleted: 0
+Objects replaced: 0
+END DATE:   Thu Nov 22 16:16:00 2012
+!!! 2012-11-22 16:16:00  Done! Elapsed time:0d 0h 0m 0s
+
+!!! 2012-11-22 16:16:00  Doing step 20:  Running overlap
+!!! 2012-11-22 16:16:00  Running: /home/nomind/Desktop/tau/amos/bin/hash-overlap -B data/ecoli_1K/reads.readsim.30x.bnk
+Starting on Thu Nov 22 16:16:00 2012
+
+Read bank is data/ecoli_1K/reads.readsim.30x.bnk
+Alignment error rate is 0.06
+Minimum overlap bases is 40
+Be strand-specific: 0
+!!! 2012-11-22 16:16:25  Done! Elapsed time:0d 0h 0m 25s
+
+!!! 2012-11-22 16:16:25  Doing step 30:  Running contigger
+!!! 2012-11-22 16:16:25  Running: /home/nomind/Desktop/tau/amos/bin/tigger -b data/ecoli_1K/reads.readsim.30x.bnk
+ Pulling reads from bank data/ecoli_1K/reads.readsim.30x.bnk
+Pulled 1036 reads from bank 
+ Pulling overlaps from bank data/ecoli_1K/reads.readsim.30x.bnk
+Pulled 29769 overlaps from bank 
+ total contained reads hidden 985
+ number of contigs 22
+this pass containment size is 985
+985 containment reads added back on this pass 
+ sub-total contained reads unhidden 985
+ total contained reads unhidden 985
+ Writing layouts to bank data/ecoli_1K/reads.readsim.30x.bnk
+!!! 2012-11-22 16:16:25  Done! Elapsed time:0d 0h 0m 0s
+
+!!! 2012-11-22 16:16:25  Doing step 40:  Running consensus
+!!! 2012-11-22 16:16:25  Running: /home/nomind/Desktop/tau/amos/bin/make-consensus -B -b data/ecoli_1K/reads.readsim.30x.bnk
+Starting on Thu Nov 22 16:16:25 2012
+
+Read bank is data/ecoli_1K/reads.readsim.30x.bnk
+Alignment error rate is 0.06
+Minimum overlap bases is 5
+Output will be written to the bank
+Input is being read from the bank 
+Processed 1 layouts
+!!! 2012-11-22 16:16:26  Done! Elapsed time:0d 0h 0m 1s
+
+!!! 2012-11-22 16:16:26  Doing step 50:  Outputting contigs
+!!! 2012-11-22 16:16:26  Running: /home/nomind/Desktop/tau/amos/bin/bank2contig data/ecoli_1K/reads.readsim.30x.bnk > data/ecoli_1K/reads.readsim.30x.contig
+Processing data/ecoli_1K/reads.readsim.30x.bnk at Thu Nov 22 16:16:26 2012
+End: Thu Nov 22 16:16:26 2012
+!!! 2012-11-22 16:16:26  Done! Elapsed time:0d 0h 0m 0s
+
+!!! 2012-11-22 16:16:26  Doing step 60:  Converting to FastA file
+!!! 2012-11-22 16:16:26  Running: /home/nomind/Desktop/tau/amos/bin/bank2fasta -b data/ecoli_1K/reads.readsim.30x.bnk > data/ecoli_1K/reads.readsim.30x.fasta
+!!! 2012-11-22 16:16:26  Done! Elapsed time:0d 0h 0m 0s
+
+!!! END - Elapsed time: 0d 0h 0m 26s
+
