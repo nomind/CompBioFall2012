@@ -11,7 +11,7 @@ There is another complication to this. The ovelaps between the x and y reads may
 
 With this kind of scheme we will get overlaps in multiples of the block size only so if the overlap is of say 256 b.p. and the block size is 5 then we will get an overlap of 250. I actually checked the results out of my program are within this range when compared with the output of minimus for the same input. Only in rare instances they differ a lot.
 
-So, I started with the 1000 base pair DNA sequence of EColi and generated the reads by Readsim with 30x coverage generating about 1000 reads. Initially, I was calculating the alignment between blocks each time using DP by Smith-Waterman. I varied the block size to see the effect on runtime and here it is
+So, I started with the 1000 base pair DNA sequence of EColi and generated the reads by Readsim with 30x coverage generating about 1000 reads. Initially, I was calculating the alignment between blocks each time using DP by Smith-Waterman. I varied the block size to see the effect on runtime for 100 reads and here it is
 
 Block Size          Time taken
 
