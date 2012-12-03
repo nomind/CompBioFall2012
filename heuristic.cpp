@@ -1,5 +1,6 @@
 #include "include.h"
 #include "read.cpp"
+#include "common.cpp"
 
 using namespace std;
 
@@ -20,15 +21,6 @@ int pow(int b, int p) {
 		ans *= b;
 	}
 	return ans;
-}
-
-int** allocate2d(int n, int m) {
-	int **buf = new int*[n];
-	for(int i=0; i<n; i++) {
-		buf[i] = new int[m];
-	}
-	
-	return buf;
 }
 
 int min(int a, int b) {
@@ -246,10 +238,10 @@ void init(int **table, int dim) {
 int main() {
 	/* read all reads */
 	vector<Read> readList;
-	readReads("../data/ecoli_1K/ecoli.reads.1k.readsim.30x.fasta", readList);
+	//readReads("../data/ecoli_1K/ecoli.reads.1k.readsim.30x.fasta", readList);
 	
 	
-	/*char x1[10000];
+	char x1[10000];
 	char *y1 = "TTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGCTTCTGAACTGATTACCTGCCGTGAGTAAATTAAAATTTTATTGACTTAGGCACTAAATACTTTAACCAATATAGGCATAGCGCACAGACAGATAAAAATTACAGAGTACACAACATCCATGAAACGCATTAGCACCACCATTACCACCACCATCACCATTACCACAGGTAACGGTGCGGGCTGACGCGTACAGGAAACACAGAAAAAAGCCCGCACCTGACAGTGCGGGCTTTTTTTTTCGACCAAAGGTAACGAGGTAACAACCATGCGAGTGTTGAAGTTCGGCGGTACATCAGTGGCAAATGCAGAACGTTCTCTGCGTGTTGCCGATATTCTGGAAAGCAATGCCAGCAGGGGCAGGTGGCCACCGTCCTCTCTGCCCCCGCCAAAATCACCAACCACCTGGTGGCGATGATTGAAAAAACCATTAGCGGCCAGGATGCTTTACCCAATATCAGCGATGCCGAACGTATTTTTGCCGAACTTTTGACGGGACTCGCCGCCGCCCAGCCGGGGTTCCCGCCGGCGCAATTGAAAACTTTCGTCGATCAGGAATTTGCCCAAATAAAACATGTCCTGCATGGC";
 	int z1 = strlen(y1);
 	strcpy(x1, y1);
@@ -260,7 +252,7 @@ int main() {
 	strcpy(x2, y2);
 	Read r2(x2, z2);
 	readList.push_back(r1);
-	readList.push_back(r2);*/
+	readList.push_back(r2);
 
 	// for every pair of Reads calculate the overlap 
 	int sz = readList.size();
@@ -271,7 +263,7 @@ int main() {
 		for(int j=i+1; j<sz; j++) {
 			//cout<<i<<" "<<j<<endl;
 			mat[i][j] = overlap(readList[i], readList[j], distBuf);
-			//cout<<mat[i][j]<<endl;
+			cout<<mat[i][j]<<endl;
 		}
 	}
 
