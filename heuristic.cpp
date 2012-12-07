@@ -4,10 +4,10 @@
 
 using namespace std;
 
-int blockSz = 24;
-int errSz = 4;
-int initScore = 24;
-int jumpSz = 24;
+int blockSz = 5;
+int errSz = 1;
+int initScore = 3;
+int jumpSz = 3;
 int bval = 0;
 int dval = -1;
 int base = 5;
@@ -94,7 +94,7 @@ int overlap(Read& r1, Read& r2, int **distBuf) {
 
 			//cout<<"Error "<<minErr<<" "<<sz<<endl;
 			// adjust from score the error
-			score += errSz - minErr;
+			score += (errSz - minErr);
 			j += sz;
 			
 			if(score < 0) {
@@ -238,7 +238,7 @@ void init(int **table, int dim) {
 int main() {
 	/* read all reads */
 	vector<Read> readList;
-	readReads("../data/ecoli_1K/ecoli.reads.1k.readsim.30x.fasta", readList);
+	readReads("data/ecoli_1K/ecoli.reads.1k.readsim.30x.fasta", readList);
 	
 	
 	/*char x1[10000];
@@ -276,9 +276,9 @@ int main() {
 		}
 	}
 	
-	init(table, dim);
+	/*init(table, dim);*/
 	
-	int sz = readList.size();
+	int sz = 1000;
 	int **mat = allocate2d(sz, sz);
 	for(int i=0; i<sz; i++) {
 		for(int j=i+1; j<sz; j++) {
@@ -287,8 +287,8 @@ int main() {
 			//cout<<mat[i][j]<<endl;
 		}
 	}
-
-	//cout<<stddev("../data/ecoli_1K/overlap.afg", mat, sz, readList)<<endl;
+    cout<<"done calc"<<endl;
+	cout<<stddev("data/ecoli_1K/overlap.afg", mat, sz, readList)<<endl;
 
 	return 0;
 }

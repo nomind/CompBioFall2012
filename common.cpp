@@ -22,6 +22,7 @@ double stddev(char *filename, int **mat, int sz, vector<Read>& readList) {
 	f.open(filename, ios::in);
 	
 	int len = 20, count = 0;
+	int ok_count = 0;
 	char str[len];
     double total = 0;
 	while(!f.eof()) {
@@ -43,19 +44,26 @@ double stddev(char *filename, int **mat, int sz, vector<Read>& readList) {
 		sscanf(str, "ahg:%d", &sl1);
 		f.getline(str, len);
 		sscanf(str, "bhg:%d", &sl2);
+		if(sl1 < 0 || sl2 < 0) {
+		    continue;
+		}
 		//cout<<readList[id1].len<<" "<<abs(sl1)<<" "<<readList[id2].len<<" "<<abs(sl2)<<endl;
-		int o1 = readList[id1].len - abs(sl1), o2 = readList[id2].len - abs(sl2);
+		int o1 = readList[id1].len - sl1, o2 = readList[id2].len - sl2;
 		//cout<<sz<<" "<<id1<<" "<<o1<<" "<<id2<<" "<<o2<<endl;
 		//assert(o1 == o2);
 		int o = max(o1, o2);
 		int my = mat[id1][id2];
         count++;
-        double delta = 1.0*abs(o-my)/o;
+        double delta = (1.0*abs(o-my))/o;
+        if(delta <= 0.01) {
+            ok_count++;
+        }
         total += delta;
 		//cout<<o<<" "<<my<<endl;
 		//assert(0 <= my + blockSz && o >= my -blockSz);
 		f.getline(str, len);
 	}
+	cout<<ok_count<<" "<<count<<endl;
 	return total/count;
 }
 

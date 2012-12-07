@@ -2,7 +2,7 @@ Why not KMP?
 
 Can we modify KMP for finding overlaps? It turns out tat we can with exact overlaps. We just need to modify the terminating condition of KMP so that to not terminate in case we do not get the complete pattern in the text but goes on to to try matching prefixes of pattern. In fact the classical KMP is an extension of suffix prefix matching of two strings.
 
-But what about approximate matches? It looks like we can modify it to handle substitutions but not insertion and deletions. But for now lets just consider substitutions only, say at max $k$ substitution. So, during preprocessing of the pattern in KMP we build an table which calculates, for every index, consider the string P[1..i], find the larget proper prefix, P[1..j], j<i, which matches the suffix P[i-j+1..i]. In our case the match may contain upto $k$ mismathes. Consider building the table for the pattern ABABA
+But what about approximate matches? Naively, it looks like we can modify it to handle substitutions but not insertion and deletions. But for now lets just consider substitutions only, say at max $k$ substitution. So, during preprocessing of the pattern in KMP we build an table which calculates, for every index, consider the string P[1..i], find the larget proper prefix, P[1..j], j<i, which matches the suffix P[i-j+1..i]. In our case the match may contain upto $k$ mismathes. Consider building the table for the pattern ABABA
 
 P[1..1) = "A"
 Match = 0
